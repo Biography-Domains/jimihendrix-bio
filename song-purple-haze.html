@@ -3,170 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purple Haze - Jimi Hendrix</title>
-    <meta name="description" content="Jimi Hendrix - Purple Haze: guitar chords, history, lyrics, and video performances.">
-    <link rel="canonical" href="https://jimihendrix.bio/">
-    <meta property="og:title" content="Purple Haze - Jimi Hendrix">
-    <meta property="og:description" content="Jimi Hendrix - Purple Haze: guitar chords, history, lyrics, and video performances.">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Purple Haze - Jimi Hendrix Videos</title>
     
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5X0XPQKF54"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5X0XPQKF54');
+    </script>
+    <meta name="google-site-verification" content="lpN-knW_P6ZOPWXkw5jX-G9Y8VzXKFjirBc8XGTCrPA">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        .nav-link { transition: color 0.2s; }
-        .nav-link:hover { color: #c084fc; }
-        .gradient-text {
-            background: linear-gradient(90deg, #c084fc, #f97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --text: #eee;
+            --text-muted: #aaa;
+            --card-bg: #1f1f3d;
         }
-        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    </style>
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--accent);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .video-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .video-meta span {
+            margin-right: 1rem;
+        }
+
+        .video-type {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-official { background: #4CAF50; color: white; }
+        .type-live { background: #FF9800; color: white; }
+        .type-cover { background: #9C27B0; color: white; }
+        .type-interview { background: #2196F3; color: white; }
+        .type-documentary { background: #F44336; color: white; }
+        .type-podcast { background: #00BCD4; color: white; }
+
+        .section-intro {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .song-section {
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .song-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+            nav { gap: 0.5rem; }
+            .nav-link { padding: 0.3rem 0.6rem; font-size: 0.9rem; }
+        }
+        </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+<a href="videos.html" class="nav-link">Videos</a>
+<a href="interviews.html" class="nav-link">Interviews</a>
+<a href="covers.html" class="nav-link">Covers</a>
+<a href="timeline.html" class="nav-link">Timeline</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Purple Haze</h1>
+<p class="subtitle">Videos and performances by Jimi Hendrix</p>
+<h2>Live Performances</h2>
+<p class="section-intro">Concert footage, TV appearances, and festival performances.</p>
+<div class="video-grid">
 
-    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-95 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-purple-400">JIMI HENDRIX</a>
-                <div class="hidden md:flex space-x-6 text-sm">
-                    <a href="/" class="nav-link text-gray-300">Home</a>
-                    <a href="about.html" class="nav-link text-gray-300">Biography</a>
-                    <a href="discography.html" class="nav-link text-gray-300">Discography</a>
-                    <a href="videos.html" class="nav-link text-gray-300">Videos</a>
-                    <a href="songs.html" class="nav-link text-gray-300">Songs</a>
-                    <a href="gallery.html" class="nav-link text-gray-300">Gallery</a>
-                    <a href="awards.html" class="nav-link text-gray-300">Awards</a>
-                </div>
-                <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+        <div class="video-card">
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/_PVjcIO4MT4?enablejsapi=1"
+                        title="The Jimi Hendrix Experience - Foxey Lady (Miami Pop 1968)"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="/" class="block py-2 text-gray-300">Home</a>
-                <a href="about.html" class="block py-2 text-gray-300">Biography</a>
-                <a href="discography.html" class="block py-2 text-gray-300">Discography</a>
-                <a href="videos.html" class="block py-2 text-gray-300">Videos</a>
-                <a href="songs.html" class="block py-2 text-gray-300">Songs</a>
-                <a href="gallery.html" class="block py-2 text-gray-300">Gallery</a>
-                <a href="awards.html" class="block py-2 text-gray-300">Awards</a>
+            <div class="video-info">
+                
+                <h3 class="video-title">The Jimi Hendrix Experience - Foxey Lady (Miami Pop 1968)</h3>
+                
+                <div class="video-meta">
+                    <span>JimiHendrixVEVO</span><span>2014</span><span>10M views</span>
+                </div>
             </div>
-        </div>
-    </nav>
-
-    <section class="pt-24 pb-12 bg-gradient-to-b from-purple-900/30 to-gray-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <a href="songs.html" class="text-purple-400 hover:text-purple-300 mb-4 inline-block">&larr; Back to Songs</a>
-            <span class="ml-4 text-xs font-bold px-2 py-1 bg-purple-600 rounded text-white">SIGNATURE ANTHEM</span>
-            <h1 class="text-5xl font-bold mb-4 mt-4 gradient-text">Purple Haze</h1>
-            <p class="text-xl text-gray-400">From <a href="album-are-you-experienced.html" class="text-purple-400 hover:text-purple-300">Are You Experienced</a> (1967)</p>
-        </div>
-    </section>
-
-    <main class="max-w-7xl mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-2 gap-12">
-            <div>
-                <!-- Main Video -->
-                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl mb-6">
-                    <iframe class="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/fjwWjx7Cw8I"
-                            frameborder="0" allowfullscreen></iframe>
-                </div>
-
-                <!-- Song History -->
-                <div class="bg-gray-800 rounded-xl p-6 mb-6">
-                    <h2 class="text-xl font-bold mb-4 text-purple-400">History</h2>
-                    <p class="text-gray-300">One of rock's most iconic opening riffs. The song's dissonant E7#9 chord (the 'Hendrix chord') became his signature sound. The lyrics were inspired by a dream and possibly influenced by his love of science fiction. The phrase 'Purple Haze' may reference a type of LSD, though Hendrix claimed it was about a dream involving walking under the sea.</p>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl p-6 mb-6"><h2 class="text-xl font-bold mb-4 text-purple-400">Awards & Recognition</h2><ul class="space-y-2"><li class="text-gray-300">Rolling Stone's 500 Greatest Songs: #17</li><li class="text-gray-300">Rock and Roll Hall of Fame's 500 Songs That Shaped Rock and Roll</li><li class="text-gray-300">Grammy Hall of Fame (2000)</li></ul></div>
-
-                <div class="bg-gray-800 rounded-xl p-6"><h2 class="text-xl font-bold mb-4 text-purple-400">Notable Cover Versions</h2><ul class="space-y-2"><li class="text-gray-300">The Cure (1993)</li><li class="text-gray-300">Frank Zappa (1988)</li><li class="text-gray-300">Wyclef Jean (2004)</li><li class="text-gray-300">Kronos Quartet (1988)</li></ul></div>
-            </div>
-
-            <div>
-                <!-- Guitar Info -->
-                <div class="bg-gray-800 rounded-xl p-6 mb-6">
-                    <h2 class="text-xl font-bold mb-4 text-purple-400">Guitar Details</h2>
-                    <div class="grid grid-cols-2 gap-4 text-sm mb-4">
-                        <div><span class="text-gray-400">Key:</span> <span class="text-white">E Major</span></div>
-                        <div><span class="text-gray-400">Capo:</span> <span class="text-white">None</span></div>
-                        <div><span class="text-gray-400">Tempo:</span> <span class="text-white">105 BPM</span></div>
-                        <div><span class="text-gray-400">Difficulty:</span> <span class="text-white">Intermediate</span></div>
-                    </div>
-                    <div>
-                        <span class="text-gray-400 text-sm">Chords Used:</span>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                            <span class="bg-gray-700 px-3 py-1 rounded text-purple-300">E7#9</span> <span class="bg-gray-700 px-3 py-1 rounded text-purple-300">G</span> <span class="bg-gray-700 px-3 py-1 rounded text-purple-300">A</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recording Info -->
-                <div class="bg-gray-800 rounded-xl p-6 mb-6">
-                    <h2 class="text-xl font-bold mb-4 text-purple-400">Recording Details</h2>
-                    <div class="space-y-2 text-sm">
-                        <div><span class="text-gray-400">Written:</span> Late 1966</div>
-                        <div><span class="text-gray-400">Recorded:</span> January 11, 1967</div>
-                        <div><span class="text-gray-400">Length:</span> 2:50</div>
-                        <div><span class="text-gray-400">Producer:</span> Chas Chandler</div>
-                    </div>
-                </div>
-
-                <div><h3 class="text-xl font-bold mb-4">More Performances</h3><div class="space-y-4">
-        <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl">
-            <iframe class="absolute top-0 left-0 w-full h-full"
-                    src="https://www.youtube.com/embed/cJunCsrhJjg"
-                    frameborder="0" allowfullscreen></iframe>
         </div>
         
-        <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl">
-            <iframe class="absolute top-0 left-0 w-full h-full"
-                    src="https://www.youtube.com/embed/WGoDaYjdfSg"
-                    frameborder="0" allowfullscreen></iframe>
-        </div>
-        </div></div>
+</div>
+<h2>Lyric Videos</h2>
+<div class="video-grid">
+
+        <div class="video-card">
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/WGoDaYjdfSg?enablejsapi=1"
+                        title="The Jimi Hendrix Experience - Purple Haze (Official Audio)"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+                
+                <h3 class="video-title">The Jimi Hendrix Experience - Purple Haze (Official Audio)</h3>
+                
+                <div class="video-meta">
+                    <span>JimiHendrixVEVO</span><span>2021</span><span>4.2M views</span>
+                </div>
             </div>
         </div>
+        
+</div>
     </main>
-    
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold text-purple-400 mb-4">Jimi Hendrix</h4>
-                    <p class="text-gray-400 text-sm">The greatest guitarist who ever lived.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Explore</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover:text-purple-400">Biography</a></li>
-                        <li><a href="discography.html" class="hover:text-purple-400">Discography</a></li>
-                        <li><a href="songs.html" class="hover:text-purple-400">Songs</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Media</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="videos.html" class="hover:text-purple-400">Videos</a></li>
-                        <li><a href="gallery.html" class="hover:text-purple-400">Gallery</a></li>
-                        <li><a href="performances.html" class="hover:text-purple-400">Performances</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">More</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="timeline.html" class="hover:text-purple-400">Timeline</a></li>
-                        <li><a href="awards.html" class="hover:text-purple-400">Awards</a></li>
-                        <li><a href="legacy.html" class="hover:text-purple-400">Legacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 jimihendrix.bio - An educational biography resource</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2025 | Video research powered by AI</p>
     </footer>
-</body></html>
+    <script>
+(() => {
+  const ytIframes = Array.from(document.querySelectorAll('iframe[src*="youtube.com/embed/"]'));
+  if (!ytIframes.length) return;
+
+  const apiSrc = "https://www.youtube.com/iframe_api";
+  const hasApiScript = Array.from(document.scripts).some(s => (s.src || "").includes(apiSrc));
+
+  const initPlayers = () => {
+    if (!window.YT || !YT.Player) return;
+    const players = [];
+    const onStateChange = (event) => {
+      if (!window.YT || event.data !== YT.PlayerState.PLAYING) return;
+      for (const p of players) {
+        if (p !== event.target) {
+          try { p.pauseVideo(); } catch (_) {}
+        }
+      }
+    };
+    for (const iframe of ytIframes) {
+      try { players.push(new YT.Player(iframe, { events: { onStateChange } })); } catch (_) {}
+    }
+  };
+
+  const prevReady = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = () => {
+    try { if (typeof prevReady === "function") prevReady(); } catch (_) {}
+    initPlayers();
+  };
+
+  if (window.YT && YT.Player) { initPlayers(); return; }
+  if (!hasApiScript) {
+    const tag = document.createElement("script");
+    tag.src = apiSrc;
+    document.head.appendChild(tag);
+  }
+})();
+</script>
+</body>
+</html>
