@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimi Hendrix Documentary</title>
+  <meta name="description" content="A 25-minute documentary-style narrative about Jimi Hendrix, built from the Hyperlink.bio research archive." />
+  
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5X0XPQKF54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5X0XPQKF54');
+  </script>
+  <meta name="google-site-verification" content="27-C9XVRt6WZu132o0KnxbTa3KCC3sxxGHArXqtxj0g" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.06);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+    }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+    h1 { font-size: 2.25rem; margin: 0 0 0.5rem; }
+    .sub { color: var(--muted); margin: 0 0 1.5rem; }
+    .panel { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid.cols2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid.cols3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    a { color: var(--accent); }
+    .card img { width:100%; height: 220px; object-fit: cover; border-radius: 12px; display:block; }
+    .caption { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; }
+    .vcard .frame { position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.35); }
+    .vcard iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .kicker { color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; }
+    ul { margin: 0.5rem 0 0; padding-left: 1.2rem; color: var(--muted); }
+    .chapters { max-height: 360px; overflow: auto; padding-right: 0.25rem; }
+    .now-playing { margin: 0.25rem 0 0.75rem; color: var(--text); font-size: 0.95rem; }
+    .now-playing .label { color: var(--muted); margin-right: 0.35rem; }
+    .chapter-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      color: var(--accent);
+      padding: 0.35rem 0;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .chapter-btn:hover { text-decoration: underline; }
+    .chapter-btn.active { color: #ffffff; font-weight: 650; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">Documentary</div>
+    <h1>Jimi Hendrix — A 25‑Minute Story</h1>
+    <p class="sub">Narrated with Google’s best male voice (en-US-Chirp3-HD-Iapetus).</p>
+
+    <div class="panel">
+      <div class="kicker">Audio</div>
+      <p class="sub">Press play, then browse chapters, images, and clips as the narration progresses.</p>
+      <audio id="doc-audio" controls preload="metadata" style="width:100%;">
+        <source src="assets/documentary_narration_premium.wav" type="audio/wav" />
+      </audio>
+    </div>
+
+    <div style="height: 1rem;"></div>
+
+    <div class="grid cols2">
+      <div class="panel">
+        <div class="kicker">Chapters</div>
+        <div id="now-playing" class="now-playing"><span class="label">Now playing:</span><span class="title">—</span></div>
+        <ul class="chapters">
+          <li><button class="chapter-btn">Early Life (1942-1961)</button></li><li><button class="chapter-btn">Army &amp; The Chitlin' Circuit (1961-1966)</button></li><li><button class="chapter-btn">The Jimi Hendrix Experience (1966-1969)</button></li><li><button class="chapter-btn">Woodstock &amp; Final Years (1969-1970)</button></li><li><button class="chapter-btn">Death &amp; Legacy</button></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="kicker">How this is made</div>
+        <p class="sub">Script comes from your biography research pages; images are served from your R2 library; clips are embedded from YouTube.</p>
+      </div>
+    </div>
+
+    <div style="height: 1rem;"></div>
+
+    <div class="panel">
+      <div class="kicker">Images</div>
+      <div class="grid cols3">
+        <div class='caption'>No images available yet.</div>
+      </div>
+    </div>
+
+    <div style="height: 1rem;"></div>
+
+    <div class="panel">
+      <div class="kicker">Clips</div>
+      <div class="grid cols2">
+        <div class='caption'>No clips available yet.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const audio = document.getElementById('doc-audio');
+      if (!audio) return;
+      const nowEl = document.getElementById('now-playing');
+      const nowTitle = nowEl ? nowEl.querySelector('.title') : null;
+
+      const btns = Array.from(document.querySelectorAll('.chapter-btn[data-start]'))
+        .map(el => {
+          const start = parseFloat(el.getAttribute('data-start') || 'NaN');
+          return { el, start, title: (el.textContent || '').trim() };
+        })
+        .filter(x => Number.isFinite(x.start))
+        .sort((a,b) => a.start - b.start);
+
+      function setActive(index) {
+        btns.forEach((b, i) => {
+          if (i === index) b.el.classList.add('active');
+          else b.el.classList.remove('active');
+        });
+        if (index >= 0 && index < btns.length) {
+          const t = btns[index].title || '—';
+          if (nowTitle) nowTitle.textContent = t;
+          // Keep active chapter visible (within the page), without being too jumpy.
+          btns[index].el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+      }
+
+      function findActiveIndex(timeSec) {
+        // last chapter whose start <= current time (with a small bias forward)
+        const t = Math.max(0, (timeSec || 0) + 0.15);
+        let lo = 0, hi = btns.length - 1, ans = -1;
+        while (lo <= hi) {
+          const mid = (lo + hi) >> 1;
+          if (btns[mid].start <= t) { ans = mid; lo = mid + 1; }
+          else hi = mid - 1;
+        }
+        return ans;
+      }
+
+      let lastActive = -2;
+      let ticking = false;
+      function onTimeUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          ticking = false;
+          const idx = findActiveIndex(audio.currentTime);
+          if (idx !== lastActive) {
+            lastActive = idx;
+            setActive(idx);
+          }
+        });
+      }
+
+      audio.addEventListener('timeupdate', onTimeUpdate);
+      audio.addEventListener('seeked', onTimeUpdate);
+      audio.addEventListener('loadedmetadata', onTimeUpdate);
+
+      btns.forEach((b) => {
+        b.el.addEventListener('click', () => {
+          const start = b.start;
+          audio.currentTime = Math.max(0, start);
+          audio.play().catch(() => {});
+          lastActive = -2;
+          onTimeUpdate();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
