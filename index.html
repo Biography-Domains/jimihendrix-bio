@@ -3,381 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimi Hendrix - Official Biography</title>
-    <meta name="description" content="Jimi Hendrix biography - complete discography, song lyrics with guitar chords, videos, and gallery covering the greatest guitarist of all time.">
-    <link rel="canonical" href="https://jimihendrix.bio/index.html">
-    <meta property="og:title" content="Jimi Hendrix - Official Biography">
-    <meta property="og:description" content="Jimi Hendrix biography - complete discography, song lyrics with guitar chords, videos, and gallery covering the greatest guitarist of all time.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jimihendrix.bio/index.html">
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/a/ae/Jimi_Hendrix_1967.png">
-    <meta property="og:site_name" content="Jimi Hendrix Biography">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jimi Hendrix - Official Biography">
-    <meta name="twitter:description" content="Jimi Hendrix biography - complete discography, song lyrics with guitar chords, videos, and gallery covering the greatest guitarist of all time.">
-
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Jimi Hendrix - Biography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(88,28,135,0.9) 0%, rgba(157,23,77,0.85) 50%, rgba(194,65,12,0.9) 100%),
-                        url('https://upload.wikimedia.org/wikipedia/commons/a/ae/Jimi_Hendrix_1967.png');
-            background-size: cover;
-            background-position: center top;
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --text: #eee;
+            --text-muted: #aaa;
         }
-        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .nav-link { transition: color 0.2s; }
-        .nav-link:hover { color: #c084fc; }
-        .gradient-text {
-            background: linear-gradient(90deg, #c084fc, #f97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--accent);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 1rem 2rem;
+            margin: 2rem 0;
+            background: var(--secondary);
+            font-style: italic;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--text-muted);
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+
+        .confidence-note {
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid var(--accent);
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+        }
+
+        .confidence-note strong {
+            color: var(--accent);
+        }
+
+        .myth-box {
+            background: var(--secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .myth-box .myth {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .myth-box .correction {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .disclosures {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        .disclosures h3 {
+            color: var(--accent);
+        }
+
+        .disclosures ul {
+            list-style-position: inside;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            nav { gap: 1rem; }
+            .nav-link { padding: 0.3rem 0.8rem; font-size: 0.9rem; }
         }
     </style>
-
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "mainEntity": {
-        "@type": "Person",
-        "name": "Jimi Hendrix",
-        "birthDate": "1942-11-27",
-        "deathDate": "1970-09-18",
-        "birthPlace": "Seattle, Washington, USA",
-        "jobTitle": "Guitarist, Singer-songwriter",
-        "award": [
-            "Rock and Roll Hall of Fame (1992)",
-            "Grammy Lifetime Achievement Award (1992)",
-            "UK Music Hall of Fame (2005)"
-        ],
-        "genre": [
-            "Psychedelic Rock",
-            "Hard Rock",
-            "Blues Rock"
-        ],
-        "sameAs": [
-            "https://www.jimihendrix.com",
-            "https://en.wikipedia.org/wiki/Jimi_Hendrix"
-        ]
-    },
-    "url": "https://jimihendrix.bio/index.html"
-}
-    </script>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-95 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-purple-400">JIMI HENDRIX</a>
-                <div class="hidden md:flex space-x-6 text-sm">
-                    <a href="/" class="nav-link text-gray-300">Home</a>
-                    <a href="about.html" class="nav-link text-gray-300">Biography</a>
-                    <a href="discography.html" class="nav-link text-gray-300">Discography</a>
-                    <a href="videos.html" class="nav-link text-gray-300">Videos</a>
-                    <a href="songs.html" class="nav-link text-gray-300">Songs</a>
-                    <a href="gallery.html" class="nav-link text-gray-300">Gallery</a>
-                    <a href="awards.html" class="nav-link text-gray-300">Awards</a>
-                </div>
-                <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="/" class="block py-2 text-gray-300">Home</a>
-                <a href="about.html" class="block py-2 text-gray-300">Biography</a>
-                <a href="discography.html" class="block py-2 text-gray-300">Discography</a>
-                <a href="videos.html" class="block py-2 text-gray-300">Videos</a>
-                <a href="songs.html" class="block py-2 text-gray-300">Songs</a>
-                <a href="gallery.html" class="block py-2 text-gray-300">Gallery</a>
-                <a href="awards.html" class="block py-2 text-gray-300">Awards</a>
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-4 py-20">
-            <div class="max-w-3xl">
-                <p class="text-purple-300 text-lg mb-4">GUITARIST, SINGER-SONGWRITER, LEGEND</p>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">Jimi Hendrix</h1>
-                <p class="text-2xl text-gray-300 mb-4">1942 - 1970</p>
-                <p class="text-xl text-gray-300 mb-8">
-                    Widely regarded as the greatest electric guitarist in history, Jimi Hendrix revolutionized rock music in just four years.
-                    His innovative techniques, otherworldly sound, and transcendent performances redefined what was possible with the electric guitar,
-                    influencing every guitarist who followed.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="about.html" class="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-500 transition">
-                        Read Biography
-                    </a>
-                    <a href="timeline.html" class="border border-purple-400 text-purple-400 px-8 py-3 rounded-lg font-bold hover:bg-purple-600 hover:text-white hover:border-purple-600 transition">
-                        View Timeline
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-16 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="text-4xl font-bold text-purple-400">4</p>
-                    <p class="text-gray-400">Studio Albums</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-purple-400">#1</p>
-                    <p class="text-gray-400">Greatest Guitarist</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-purple-400">27</p>
-                    <p class="text-gray-400">Years Old</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-bold text-purple-400">∞</p>
-                    <p class="text-gray-400">Legacy</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Quotes -->
-    <section class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">In His Own Words</h2>
-            <div class="grid md:grid-cols-1 gap-8 max-w-3xl mx-auto">
-
-                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-purple-500">
-                    <p class="text-xl italic text-gray-300 mb-4">"Music doesn't lie. If there is something to be changed in this world, then it can only happen through music."</p>
-                    <p class="text-gray-500">— Jimi Hendrix</p>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-orange-500">
-                    <p class="text-xl italic text-gray-300 mb-4">"When the power of love overcomes the love of power, the world will know peace."</p>
-                    <p class="text-gray-500">— Jimi Hendrix</p>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-pink-500">
-                    <p class="text-xl italic text-gray-300 mb-4">"Knowledge speaks, but wisdom listens."</p>
-                    <p class="text-gray-500">— Jimi Hendrix</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Preview -->
-    <section class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">Key Moments</h2>
-            <div class="space-y-6 max-w-3xl mx-auto">
-
-                <div class="flex items-start space-x-6 card-hover bg-gray-900 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg min-w-max">1942</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Born in Seattle, Washington</h3>
-                        <p class="text-gray-400">James Marshall Hendrix born on November 27</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-6 card-hover bg-gray-900 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg min-w-max">1966</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Discovered by Chas Chandler</h3>
-                        <p class="text-gray-400">Former Animals bassist brings Hendrix to London, forms The Jimi Hendrix Experience</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-6 card-hover bg-gray-900 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg min-w-max">1967</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Monterey Pop Festival</h3>
-                        <p class="text-gray-400">Legendary US debut performance, sets guitar on fire</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-6 card-hover bg-gray-900 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg min-w-max">1969</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Woodstock Performance</h3>
-                        <p class="text-gray-400">Iconic Star-Spangled Banner becomes defining moment of the festival</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start space-x-6 card-hover bg-gray-900 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white font-bold px-4 py-2 rounded-lg min-w-max">1970</div>
-                    <div>
-                        <h3 class="text-xl font-bold">Electric Lady Studios Opens</h3>
-                        <p class="text-gray-400">Hendrix's dream studio in NYC opens just weeks before his death</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="text-center mt-12">
-                <a href="timeline.html" class="text-purple-400 hover:text-purple-300 font-bold">
-                    View Full Timeline &rarr;
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Albums -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">Essential Albums</h2>
-            <div class="grid md:grid-cols-4 gap-6">
-                <a href="album-are-you-experienced.html" class="card-hover bg-gray-800 rounded-xl overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/3/3f/Are_You_Experienced_-_US_cover-edit.jpg" alt="Are You Experienced" class="w-full aspect-square object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold">Are You Experienced</h3>
-                        <p class="text-gray-400 text-sm">1967 • Debut Album</p>
-                    </div>
-                </a>
-                <a href="album-axis-bold-as-love.html" class="card-hover bg-gray-800 rounded-xl overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/4/40/Axis_Bold_as_Love.jpg" alt="Axis: Bold as Love" class="w-full aspect-square object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold">Axis: Bold as Love</h3>
-                        <p class="text-gray-400 text-sm">1967 • Sophomore Classic</p>
-                    </div>
-                </a>
-                <a href="album-electric-ladyland.html" class="card-hover bg-gray-800 rounded-xl overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/c/cb/ElectricLadyland.jpg" alt="Electric Ladyland" class="w-full aspect-square object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold">Electric Ladyland</h3>
-                        <p class="text-gray-400 text-sm">1968 • Double Album Masterpiece</p>
-                    </div>
-                </a>
-                <a href="album-band-of-gypsys.html" class="card-hover bg-gray-800 rounded-xl overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/b/b7/BandOfGypsys.jpg" alt="Band of Gypsys" class="w-full aspect-square object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold">Band of Gypsys</h3>
-                        <p class="text-gray-400 text-sm">1970 • Live Funk Rock</p>
-                    </div>
-                </a>
-            </div>
-            <div class="text-center mt-8">
-                <a href="discography.html" class="text-purple-400 hover:text-purple-300 font-bold">View Full Discography &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Songs -->
-    <section class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">Iconic Songs</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="song-purple-haze.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-purple-600 rounded text-white">SIGNATURE ANTHEM</span>
-                    <h3 class="text-xl font-bold mt-4">Purple Haze</h3>
-                    <p class="text-gray-400">The song that defined psychedelic rock with its revolutionary E7#9 chord</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: E Major • 1967</p>
-                </a>
-                <a href="song-voodoo-child-slight-return.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-red-700 rounded text-white">GUITAR MASTERPIECE</span>
-                    <h3 class="text-xl font-bold mt-4">Voodoo Child (Slight Return)</h3>
-                    <p class="text-gray-400">The ultimate showcase of Hendrix's wah-wah mastery</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: E Minor • 1968</p>
-                </a>
-                <a href="song-little-wing.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-indigo-600 rounded text-white">BEAUTIFUL BALLAD</span>
-                    <h3 class="text-xl font-bold mt-4">Little Wing</h3>
-                    <p class="text-gray-400">A two-minute masterpiece of guitar poetry</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: E Minor • 1967</p>
-                </a>
-                <a href="song-all-along-the-watchtower.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-blue-700 rounded text-white">DEFINITIVE COVER</span>
-                    <h3 class="text-xl font-bold mt-4">All Along the Watchtower</h3>
-                    <p class="text-gray-400">Even Dylan plays it Hendrix's way now</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: C# Minor • 1968</p>
-                </a>
-                <a href="song-machine-gun.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-gray-700 rounded text-white">ANTI-WAR STATEMENT</span>
-                    <h3 class="text-xl font-bold mt-4">Machine Gun</h3>
-                    <p class="text-gray-400">12 minutes of searing anti-war commentary</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: E Minor • 1970</p>
-                </a>
-                <a href="song-star-spangled-banner.html" class="card-hover bg-gray-900 rounded-xl p-6">
-                    <span class="text-xs font-bold px-2 py-1 bg-red-800 rounded text-white">CULTURAL MOMENT</span>
-                    <h3 class="text-xl font-bold mt-4">Star Spangled Banner</h3>
-                    <p class="text-gray-400">Woodstock's most iconic moment</p>
-                    <p class="text-purple-400 mt-2 text-sm">Key: E Major • 1969</p>
-                </a>
-            </div>
-            <div class="text-center mt-8">
-                <a href="songs.html" class="text-purple-400 hover:text-purple-300 font-bold">View All Songs &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Video -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">Watch</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl">
-                    <iframe class="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/sjzZh6-h9fM"
-                            title="Star Spangled Banner - Woodstock 1969"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                </div>
-                <div class="mt-4 text-center">
-                    <h3 class="text-xl font-bold">Star Spangled Banner - Woodstock 1969</h3>
-                    <p class="text-gray-400">The performance that defined a generation</p>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <a href="videos.html" class="text-purple-400 hover:text-purple-300 font-bold">Watch More Videos &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold text-purple-400 mb-4">Jimi Hendrix</h4>
-                    <p class="text-gray-400 text-sm">The greatest guitarist who ever lived. His music continues to inspire and influence musicians worldwide.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Explore</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover:text-purple-400">Biography</a></li>
-                        <li><a href="discography.html" class="hover:text-purple-400">Discography</a></li>
-                        <li><a href="songs.html" class="hover:text-purple-400">Songs & Chords</a></li>
-                        <li><a href="videos.html" class="hover:text-purple-400">Videos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Media</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="gallery.html" class="hover:text-purple-400">Photo Gallery</a></li>
-                        <li><a href="performances.html" class="hover:text-purple-400">Live Performances</a></li>
-                        <li><a href="interviews.html" class="hover:text-purple-400">Interviews</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">More</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="timeline.html" class="hover:text-purple-400">Timeline</a></li>
-                        <li><a href="awards.html" class="hover:text-purple-400">Awards</a></li>
-                        <li><a href="influence.html" class="hover:text-purple-400">Influence</a></li>
-                        <li><a href="legacy.html" class="hover:text-purple-400">Legacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 jimihendrix.bio - An educational biography resource</p>
-            </div>
-        </div>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+<a href="timeline.html" class="nav-link">Timeline</a>
+<a href="methodology.html" class="nav-link">Methodology</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Jimi Hendrix</h1>
+<p><em>A research-verified biography</em></p>
+<p>James Marshall "Jimi" Hendrix stands as perhaps the most revolutionary guitarist in the history of popular music, a visionary artist who transformed the electric guitar from a rhythm instrument into a vehicle for sonic exploration and emotional expression. In his tragically brief career spanning just four years in the spotlight, Hendrix redefined what rock music could be, blending blues, jazz, funk, and psychedelic experimentation into a sound that was uniquely his own. His innovative use of feedback, distortion, and effects pedals created soundscapes that had never been heard before, while his explosive performances and charismatic stage presence made him a cultural icon of the 1960s counterculture movement.</p>
+<p>Born in Seattle in 1942 and rising to international fame in London's swinging music scene of 1966, Hendrix's journey from a shy left-handed guitarist playing right-handed instruments upside down to becoming the headlining act at Woodstock is a story of raw talent, relentless determination, and artistic fearlessness. This comprehensive biography explores every facet of his remarkable life: his challenging childhood and early musical influences, his years as a sideman for R&B legends, his breakthrough with the Jimi Hendrix Experience, and his evolution as both a musician and cultural figure. Through detailed examination of his recordings, performances, and personal relationships, we trace the development of an artist who packed a lifetime of musical innovation into just 27 years, leaving behind a legacy that continues to inspire musicians and music lovers more than half a century after his death.</p>
+<h2>Chapters</h2>
+<ul>
+</ul>
+    </main>
+    <footer>
+        <p>Research-verified biography. <a href="methodology.html" style="color: var(--accent);">View methodology</a></p>
+        <p>&copy; 2025 | Epistemic research pipeline</p>
     </footer>
 </body>
-</html>
+</html><\!-- SSL trigger Tue Dec 16 08:28:45 PM EST 2025 -->
